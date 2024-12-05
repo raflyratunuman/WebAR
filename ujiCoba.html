@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <meta name="description" content="" />
+                    <meta name="author" content="" />
+                <title>Project AR Test Kacamata</title>
+            <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+            <!-- Font Awesome icons (free version)-->
+            <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+                <!-- Google fonts-->
+                <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+                    <!-- Core theme CSS (includes Bootstrap)-->
+                    <link href="css/styles.css" rel="stylesheet" />
+                <!-- include A-Frame obviously -->
+                <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-face-aframe.prod.js"></script>
+                <script src="C:/Users/Organizer1/Documents/Web AR Project/JS/testScripts.js"></script>
+
+    </head>
+
+    <body>
+        <body id="page-top">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                <div class="container px-4 px-lg-5">
+                    <a class="navbar-brand" href="homepage.html">Test Kacamata</a>
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="#about">About Project</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#projects">Try Now</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#signup">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Masthead-->
+            <header class="contact-section">
+                <body style='margin : 0px; overflow: hidden;'>
+                    <div id="ar-container">
+                        <div id="example-control-overlay" class="overlay">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div>
+                                <button id="example-start-button">Start</button>
+                                <button id="example-stop-button">Stop</button>
+                                <button id="example-switch-camera-button">Switch Camera</button>
+                            </div>
+                        </div>
+                        <div class="options-panel">
+                            <img id="hat1" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/hat/thumbnail.png"/>
+                            <img id="hat2" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/hat2/thumbnail.png"/>
+                            <img id="glasses1" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses/thumbnail.png"/>
+                            <img id="glasses2" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses2/thumbnail.png"/>
+                            <img id="earring" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/earring/thumbnail.png"/>
+                        </div>
+                            <a-scene mindar-face="autoStart: false" embedded color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+                                <a-assets>
+                                  <a-asset-item id="headModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/sparkar/headOccluder.glb"></a-asset-item>
+                                  <a-asset-item id="glassesModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses/scene.gltf"></a-asset-item>
+                                  <a-asset-item id="glassesModel2" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/glasses2/scene.gltf"></a-asset-item>
+                                  <a-asset-item id="hatModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/hat/scene.gltf"></a-asset-item>
+                                  <a-asset-item id="hatModel2" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/hat2/scene.gltf"></a-asset-item>
+                                  <a-asset-item id="earringModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/face-tracking/assets/earring/scene.gltf"></a-asset-item>
+                                </a-assets>
+                                  <a-camera active="false" position="0 0 0" look-controls="false"></a-camera>
+                                <!-- head occluder -->
+                                  <a-entity mindar-face-target="anchorIndex: 168">
+                                    <a-gltf-model mindar-face-occluder position="0 -0.3 0.15"rotation="0 0 0" scale="0.065 0.065 0.065" src="#headModel"></a-gltf-model>
+                                  </a-entity>
+                                  <a-entity mindar-face-target="anchorIndex: 10">
+                                    <a-gltf-model rotation="0 -0 0" position="0 1.0 -0.5" scale="0.35 0.35 0.35" src="#hatModel" class="hat1-entity" visible="false"></a-gltf-model>
+                                  </a-entity>
+                                  <a-entity mindar-face-target="anchorIndex: 10">
+                                    <a-gltf-model rotation="0 -0 0" position="0 -0.2 -0.5" scale="0.008 0.008 0.008" src="#hatModel2" class="hat2-entity" visible="false"></a-gltf-model>
+                                  </a-entity>
+                                  <a-entity mindar-face-target="anchorIndex: 168">
+                                    <a-gltf-model rotation="0 -0 0" position="0 0 0" scale="0.01 0.01 0.01" src="#glassesModel" class="glasses1-entity" visible="false"></a-gltf-model>
+                                  </a-entity>
+                                  <a-entity mindar-face-target="anchorIndex: 168">
+                                    <a-gltf-model rotation="0 -90 0" position="0 -0.35 0" scale="0.6 0.6 0.6" src="#glassesModel2" class="glasses2-entity" visible="false"></a-gltf-model>
+                                  </a-entity>
+                                  <a-entity mindar-face-target="anchorIndex: 127">
+                                    <a-gltf-model rotation="-0.1 -0 0" position="0 -0.3 -0.3" scale="0.05 0.05 0.05" src="#earringModel" class="earring-entity" visible="false"></a-gltf-model>
+                                  </a-entity>
+                                  <a-entity mindar-face-target="anchorIndex: 356">
+                                    <a-gltf-model rotation="0.1 -0 0" position="0 -0.3 -0.3" scale="0.05 0.05 0.05" src="#earringModel" class="earring-entity" visible="false"></a-gltf-model>
+                                  </a-entity>
+                            </a-scene>      
+                    </div> 
+            </header> 
+            <!-- Contact-->
+            <section class="contact-section bg-black">
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="card py-4 h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+                                    <h4 class="text-uppercase m-0">Address</h4>
+                                    <hr class="my-4 mx-auto" />
+                                    <div class="small text-black-50">Jl.Mojo Klanggru Lor No.15</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="card py-4 h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-envelope text-primary mb-2"></i>
+                                    <h4 class="text-uppercase m-0">Email</h4>
+                                    <hr class="my-4 mx-auto" />
+                                    <div class="small text-black-50"><a href="#!">raflyratunuman@yahoo.com</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <div class="card py-4 h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-mobile-alt text-primary mb-2"></i>
+                                    <h4 class="text-uppercase m-0">Phone</h4>
+                                    <hr class="my-4 mx-auto" />
+                                    <div class="small text-black-50">+62 8969-0566-400</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social d-flex justify-content-center">
+                        <a class="mx-2" href="https://x.com/rafly_ratunuman"><i class="fab fa-twitter"></i></a>
+                        <a class="mx-2" href="https://facebook.com/yudis.dharma.9"><i class="fab fa-facebook-f"></i></a>
+                        <a class="mx-2" href="https://www.instagram.com/rafly_ratu/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </section>
+            <!-- Footer-->
+            <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Test Kacamata 2023</div></footer>
+            <!-- Bootstrap core JS-->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- Core theme JS-->
+            <script src="js/scripts.js"></script>
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <!-- * *                               SB Forms JS                               * *-->
+            <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+            <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        </body>
+</html>
